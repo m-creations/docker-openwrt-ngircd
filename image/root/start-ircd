@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sed -ie "s/Name = irc.example.net/Name = $SERVER_NAME/" /etc/ngircd.conf
+sed -ie "s/Info = Server Info Text/Info = $SERVER_INFO/" /etc/ngircd.conf
+sed -ie "s/;MotdPhrase = .*/MotdPhrase = \"$MOTD\"/" /etc/ngircd.conf
+
+ngircd --passive --nodaemon
