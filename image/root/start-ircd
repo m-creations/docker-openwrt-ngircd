@@ -8,7 +8,7 @@ fi
 sed -ie "s/Name = irc.example.net/Name = $SERVER_NAME/" /etc/ngircd.conf
 sed -ie "s/Info = Server Info Text/Info = $SERVER_INFO/" /etc/ngircd.conf
 sed -ie "s/;MotdPhrase = .*/MotdPhrase = \"$MOTD\"/" /etc/ngircd.conf
-sed -ie "s/;Name = TheOperator/Name = $OP_NAME/" /etc/ngircd.conf
+sed -ie "s/;Name = TheOper/Name = $OP_NAME/" /etc/ngircd.conf
 sed -ie "s/;Password = ThePwd/Password = $OP_PASS/" /etc/ngircd.conf
 
 sed -ie "s/;AllowRemoteOper = .*/AllowRemoteOper = yes/" /etc/ngircd.conf
