@@ -7,6 +7,9 @@ ENV SERVER_NAME irc.example.com
 ENV SERVER_INFO "Example Inc IRC server"
 ENV MOTD "Welcome to Example Inc's IRC chat!"
 
+ENV OP_NAME TheOperator
+ENV OP_PASS changeme
+
 ADD image/root/ /
 
 RUN opkg update &&\

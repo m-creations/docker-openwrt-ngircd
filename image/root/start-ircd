@@ -1,7 +1,18 @@
 #!/bin/bash
 
+if [ "$OP_PASS" == "changeme" ] ; then
+    printf "\n\nYou MUST specify an operator password for operator user $OP_NAME (-e OP_PASS=eL9jQhjT)\n\n"
+    exit 1
+fi
+
 sed -ie "s/Name = irc.example.net/Name = $SERVER_NAME/" /etc/ngircd.conf
 sed -ie "s/Info = Server Info Text/Info = $SERVER_INFO/" /etc/ngircd.conf
 sed -ie "s/;MotdPhrase = .*/MotdPhrase = \"$MOTD\"/" /etc/ngircd.conf
+sed -ie "s/;Name = TheOperator/Name = $OP_NAME/" /etc/ngircd.conf
+sed -ie "s/;Password = ThePwd/Password = $OP_PASS/" /etc/ngircd.conf
+
+sed -ie "s/;AllowRemoteOper = .*/AllowRemoteOper = yes/" /etc/ngircd.conf
+sed -ie "s/;MaxConnectionsIP = .*/MaxConnectionsIP = 0/" /etc/ngircd.conf
+sed -ie "s/;MaxJoins = 10/MaxJoins = 20/" /etc/ngircd.conf
 
 ngircd --passive --nodaemon
